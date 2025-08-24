@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubbles love ❤️</title>
+    <style>
+        /* --- Aquí va todo tu CSS del escenario (el que me pasaste) --- */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://img.freepik.com/vector-gratis/tema-san-valentin-corazones-cielo-rosa_1308-38030.jpg?semt=ais_hybrid&w=740') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .message {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            font-size: 28px;
+            color: #d63384;
+            font-weight: bold;
+            margin-bottom: 25px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .charming-text {
+            position: absolute;
+            font-size: 18px;
+            font-family: 'Cursive', sans-serif;
+            color: #d63384;
+            animation: fadeInText 6s ease-in-out infinite;
+            z-index: 1;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .text-bubble {
+            position: absolute;
+            font-size: 18px;
+            font-family: 'Cursive', sans-serif;
+            color: #d63384;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 25px;
+            animation: floatText 8s ease-in-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes floatText {
+            0% { opacity: 0; transform: scale(0.5) translateY(0px); }
+            50% { opacity: 1; transform: scale(1.2) translateY(-50px); }
+            100% { opacity: 0; transform: scale(1) translateY(-100px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">I Love You ❤️</div>
+    <div id="bubbles-text"></div>
+
+    <!-- Música automática -->
+    <audio autoplay loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio en HTML5.
+    </audio>
+
+    <script>
+        // Lista de mensajes románticos
+        const messages = [
+            "Te amo muchísimo ❤️",
+            "Gracias por estar en mi vida 🌟",
+            "Eres mi persona favorita 💕",
+            "Juntos por siempre 🥰",
+            "Tú y yo, para siempre 💖",
+            "Tu sonrisa me ilumina 💫",
+            "Eres lo mejor que me ha pasado 😍",
+            "Cada momento contigo es mágico ✨",
+            "Siempre pienso en ti 💭",
+            "Mi corazón es tuyo 💘"
+        ];
+
+        function createTextBubble() {
+            const bubble = document.createElement("div");
+            bubble.className = "text-bubble";
+            bubble.innerText = messages[Math.floor(Math.random() * messages.length)];
+            bubble.style.left = Math.random() * 80 + "vw";
+            bubble.style.top = Math.random() * 80 + "vh";
+            document.getElementById("bubbles-text").appendChild(bubble);
+
+            setTimeout(() => bubble.remove(), 8000);
+        }
+
+        setInterval(createTextBubble, 500);
+    </script>
+</body>
+</html>
